@@ -15,7 +15,11 @@ namespace AdoNet
 
             //UC2
             //AddRecordInput();                  // Add Record into Store Procedure table
-            repository.GetAllEmployeeData();     // View all Records            
+            //repository.GetAllEmployeeData();     // View all Records            
+            //Console.WriteLine();
+
+            //UC3
+            repository.UpdateBasicPay("Terisa", 3000000);//UC3 update BasicPay where name is Terisa table 
             Console.WriteLine();
         }
 
