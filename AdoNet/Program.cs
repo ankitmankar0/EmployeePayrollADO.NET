@@ -12,10 +12,6 @@ namespace AdoNet
 
             // UC1 Ensuring the database connection using the sql connection string
             repository.DataBaseConnection();
-
-
         }
-
-
     }
 }

@@ -37,7 +37,5 @@ namespace AdoNet
             }
             return true;
         }
-
-
     }
 }
