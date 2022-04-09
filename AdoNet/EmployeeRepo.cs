@@ -5,14 +5,7 @@ using System.Data.SqlClient;
 namespace AdoNet
 {
     public class EmployeeRepo
-    {
-        /* UC1:- Ability to create a payroll service database and have C# program connect to database.
-                - Use the payroll_service database created in MSSQL.
-                - Install System.Data.SqlClient Package.
-                - Check if the database connection to payroll_service mssql DB is established.
-        */
-
-
+    {             
         public static string connectionString = @"Data Source=DESKTOP-PRPKSI0\SQLEXPRESS;Initial Catalog=payroll_service;Integrated Security=True";
         //Specifying the connection string from the sql server connection.
 
@@ -53,7 +46,7 @@ namespace AdoNet
                 using (connection)
                 {
 
-                    string query = "Select * from dbo.employee_payroll"; // Query to get all the data from table./*TableName:-dbo.payroll_service*/
+                    string query = "select * from dbo.employee_payroll"; // Query to get all the data from table./*TableName:-dbo.payroll_service*/
 
                     this.connection.Open(); //open connection
 
@@ -148,12 +141,13 @@ namespace AdoNet
                 connection.Close();
             }
         }
+
         /* UC3:- Ability to update the salary i.e. the base pay for Employee 
-               Terisa to 3000000.00 and sync it with Database.
-               - Update the employee payroll in the database.
-               - Update the Employee Payroll Object with the Updated Salary.
-               - Compare Employee Payroll Object with DB to pass the MSTest Test.
-       */
+                Terisa to 3000000.00 and sync it with Database.
+                - Update the employee payroll in the database.
+                - Update the Employee Payroll Object with the Updated Salary.
+                - Compare Employee Payroll Object with DB to pass the MSTest Test.
+        */
 
         public bool UpdateBasicPay(string EmployeeName, double BasicPay)
         {
@@ -181,7 +175,40 @@ namespace AdoNet
                 connection.Close();
             }
             return true;
-
         }
+
+        /*UC4:- Ability to update the salary i.e. the base pay for Employee.
+               Terisa to 3000000.00 and sync it with Database using JDBC Prepared Statement.
+               - Update the employee payroll in the database.
+               - Update the Employee Payroll Object with the Updated Salary.
+               - Compare Employee Payroll Object with DB to pass the MSTest Test.
+       */
+        public double UpdatedSalaryFromDatabase(string EmployeeName)
+        {
+
+            string cconnectionString = @"Data Source=DESKTOP-PRPKSI0\SQLEXPRESS;Initial Catalog=Payroll_Service;Integrated Security=True"; //Specifying the connection string from the sql server connection.
+
+            SqlConnection connection = new SqlConnection(cconnectionString);
+            try
+            {
+                using (connection)
+                {
+                    string query = @"select BasicPay from dbo.employee_payroll where EmployeeName=@inputEmployeeName";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    connection.Open();
+                    command.Parameters.AddWithValue("@inputEmployeeName", EmployeeName);
+                    return (double)command.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
     }
 }

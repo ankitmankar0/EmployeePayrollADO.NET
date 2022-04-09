@@ -43,5 +43,21 @@ namespace TestProject1
             bool expected = true; //expected true 
             Assert.AreEqual(expected, actual); // Check equal or not
         }
+        /* TC4:- Compare Employee Payroll Object with DB to pass the Test.*/
+
+        [TestMethod]
+        public void GivenUpdateSalaryValue_CheckIfTheDatabaseGotUpdated()
+        {
+            //Arrange
+            string EmployeeName = "Terisa";
+            double BasicPay = 60000;
+            EmployeeRepo repository = new EmployeeRepo();
+            EmployeeModel empModel = new EmployeeModel();
+            //Act
+            repository.UpdateBasicPay(EmployeeName, BasicPay);
+            double expectedPay = repository.UpdatedSalaryFromDatabase(EmployeeName);
+            //Assert
+            Assert.AreEqual(BasicPay, expectedPay);
+        }
     }
 }
