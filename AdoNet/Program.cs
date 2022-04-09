@@ -19,7 +19,10 @@ namespace AdoNet
             //Console.WriteLine();
 
             //UC3
-            repository.UpdateBasicPay("Terisa", 3000000);//UC3 update BasicPay where name is Terisa table 
+            //repository.UpdateBasicPay("Terisa", 3000000);//UC3 update BasicPay where name is Terisa table 
+            //Console.WriteLine();
+
+            repository.UpdatedSalaryFromDatabase("Terisa");
             Console.WriteLine();
         }
 
