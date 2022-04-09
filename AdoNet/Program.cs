@@ -25,9 +25,17 @@ namespace AdoNet
             //repository.UpdatedSalaryFromDatabase("Terisa");
             //Console.WriteLine();
 
-            repository.EmployeesFromForDateRange("2022-01-15");
+            //repository.EmployeesFromForDateRange("2022-01-15");
+            //Console.WriteLine();
+
+            //UC6
+            //repository.FindGroupedByGenderRecord("M");
+
+            //UC7
+            repository.InsertIntoMultipleTablesWithTransactions();
 
             Console.WriteLine();
+
         }
 
         public static void AddRecordInput()
