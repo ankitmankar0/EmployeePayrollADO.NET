@@ -22,7 +22,11 @@ namespace AdoNet
             //repository.UpdateBasicPay("Terisa", 3000000);//UC3 update BasicPay where name is Terisa table 
             //Console.WriteLine();
 
-            repository.UpdatedSalaryFromDatabase("Terisa");
+            //repository.UpdatedSalaryFromDatabase("Terisa");
+            //Console.WriteLine();
+
+            repository.EmployeesFromForDateRange("2022-01-15");
+
             Console.WriteLine();
         }
 
