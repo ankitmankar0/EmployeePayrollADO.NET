@@ -32,7 +32,10 @@ namespace AdoNet
             //repository.FindGroupedByGenderRecord("M");
 
             //UC7
-            repository.InsertIntoMultipleTablesWithTransactions();
+            //repository.InsertIntoMultipleTablesWithTransactions();
+            //Console.WriteLine();
+
+            repository.RetrieveEmployeeDetailsFromMultipleTables();
 
             Console.WriteLine();
 
